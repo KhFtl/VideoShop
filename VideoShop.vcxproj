@@ -145,6 +145,7 @@
     <ClInclude Include="DAL.h" />
     <ClInclude Include="EnterKeyboard.h" />
     <ClInclude Include="Print.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="VideoData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
