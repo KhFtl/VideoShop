@@ -7,7 +7,7 @@
 using namespace std;
 
 //Введення з клавіатури одного фільму
-Film GetFilm()
+Film EnterFilm()
 {
 	Film film;
 	Genre genre;
@@ -15,8 +15,8 @@ Film GetFilm()
 	cin >> film.FilmName;
 	cout << "Режисер фільму: ";
 	cin >> film.Director;
-	vector<Genre> genres = GetGenre("genre.dat");
-	PrintGenre(genres);
+	vector<Genre> genres = GetGenres("genre.dat");
+	PrintGenres(genres);
 	int numGen;
 	cout << "Оберіть номер жанру: "; cin >> numGen;
 	if (numGen > genres.size() || numGen < 0)
@@ -28,4 +28,13 @@ Film GetFilm()
 	cout << "Рейтинг фільму: "; cin >> film.Raiting;
 	cout << "Ціна за диск фільму: "; cin >> film.PriceForDisk;
 	return film;
+}
+//Введення з клавіатури жанру
+Genre EnterGenre()
+{
+	Genre genre;
+	cout << "Жанр: "; cin >> genre.GenreName;
+	cout << "Вікові обмеження: "; cin >> genre.RestrictionsByAge;
+	return genre;
+
 }

@@ -8,10 +8,10 @@ using namespace std;
 
 //-------------------------------------ЖАНРИ-----------------------------------
 //Читання жанрів з текстового файлу 
-vector<Genre> GetGenre(string fileName)
+vector<Genre> GetGenres(string fileName)
 {
-	if (fileName.length() < 5) return;
 	vector<Genre> genres;
+	if (fileName.length() < 5) return genres;
 	Genre genre;
 	ifstream inp(fileName);
 	while (!inp.eof())
@@ -21,6 +21,7 @@ vector<Genre> GetGenre(string fileName)
 		genres.push_back(genre);
 	}
 	inp.close();
+	genres.pop_back();
 	return genres;
 }
 //Запис всіх жанрів в текстовий файл
@@ -30,8 +31,8 @@ void WriteGenres(vector<Genre> genres, string fileName)
 	ofstream out(fileName);
 	for (int i = 0; i < genres.size(); i++)
 	{
-		out << genres[i].GenreName;
-		out << genres[i].RestrictionsByAge;
+		out << genres[i].GenreName<<endl;
+		out << genres[i].RestrictionsByAge << endl;
 	}
 	out.close();
 }
@@ -45,22 +46,22 @@ void WriteFilms(vector<Film> films, string fileName)
 	ofstream out(fileName);
 	for (int i = 0; i < films.size(); i++)
 	{
-		out << films[i].FilmName;
-		out << films[i].Director;
-		out << films[i].FilmGenre.GenreName;
-		out << films[i].FilmGenre.RestrictionsByAge;
-		out << films[i].Raiting;
-		out << films[i].PriceForDisk;
+		out << films[i].FilmName << endl;
+		out << films[i].Director << endl;
+		out << films[i].FilmGenre.GenreName << endl;
+		out << films[i].FilmGenre.RestrictionsByAge << endl;
+		out << films[i].Raiting << endl;
+		out << films[i].PriceForDisk << endl;
 	}
 	out.close();
 }
 //Введення всіх фільмів з файлу
 vector<Film> GetFilms(string fileName)
 {
-	if (fileName.length() < 5) return;
 	Film film;
 	Genre genre;
 	vector<Film> films;
+	if (fileName.length() < 5) return films;
 	ifstream inp(fileName);
 	while (!inp.eof())
 	{
@@ -74,6 +75,7 @@ vector<Film> GetFilms(string fileName)
 		films.push_back(film);
 	}
 	inp.close();
+	films.pop_back();
 	return films;
 }
 //----------------------------------------------------------------------------
